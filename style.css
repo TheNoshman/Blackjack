@@ -1,0 +1,73 @@
+body {
+  background-color: #000000;
+  margin: 0px;
+  font-family: 'Nunito', sans-serif;
+  letter-spacing: 0.03em;
+  
+}
+
+/* Blackjack title */
+.header {
+	background-color: #ffffff;
+	text-align: center;
+}
+
+/* Instructions title container */
+.title-row {
+	margin-top: 42px;
+	margin-bottom: 21px;
+	text-align: center;
+}
+
+/* Instructions word */
+.instructions-title {
+	display: inline;
+	color: #ffffff;
+}
+/* Instructions text & number container*/
+.instructions-row {
+	margin: 0 auto;
+	width: 400px;
+}
+
+/* Instructions numbers*/
+.instructions-number {
+	padding-right: 5px;
+	font-size: 30px;
+	color: #AAA5A3;
+}
+
+/* Individual instruction paragraphs*/
+.instructions-text {
+	padding: 10px;
+	font-size: 14px;
+	color: #ffffff;
+}
+/* Row containing cards */
+.card-row {
+	text-align: center;
+}
+
+/* Card itself */
+.card {
+  padding: 10px;
+}
+
+/* Row containing buttons and live player totals*/
+.score-row {
+	text-align: center;
+	color: white;
+	height: 150px;
+	display: block;
+}
+
+/* Row containing control buttons */
+.buttons {
+	margin: auto;
+	width: 120px;
+	font-size: 18px;
+	text-align: center;
+	height: 35px;
+
+	
+}

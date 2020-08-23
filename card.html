@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <title>Blackjack</title>
+
+    <!--CSS style sheet-->
+    <link href="./style.css" rel="stylesheet" type="text/css">
+
+    <!--Google fonts link-->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+
+    <!--Js file link-->
+    <script type="text/javascript" src="card.js" defer ></script>
+
+  </head>
+
+
+
+  <body>
+
+    <!-- Top row with Blackjack title on white background -->
+    <header class="header">
+      <h1>Blackjack</h1>
+    </header>
+
+    
+
+
+    <!-- Row with Instructions & stars -->
+    <div class="title-row">
+      <h3 class="instructions-title">Instructions</h3>
+    </div>
+
+    <table class="instructions-row">
+      <tr>
+        <td class="instructions-number">1.</td>
+        <td class="instructions-text">Attempt to beat the dealer by getting a total card count as close to 21 as possible, without going over 21.</td>
+      </tr>
+      <tr>
+        <td class="instructions-number">2.</td>
+        <td class="instructions-text">In this simplified version, ace is worth 1. Face cards are 10 and any other card is its number value.</td>
+      </tr>
+      <tr>
+        <td class="instructions-number">3.</td>
+        <td class="instructions-text">You can either 'hit' to take a random card from the pack to add to your total or 'stick' to keep your current hand and continue the game.</td>
+      </tr>
+      <tr>
+        <td class="instructions-number">4.</td>
+        <td class="instructions-text">Try and get closer to 21 than the dealer!</td>
+      </tr>
+    </table>
+
+
+
+
+
+
+    <!--Card row-->
+    <div class="playing-row">
+
+      
+
+        <!--Players card row -->
+        <div class="card-row">
+
+          <!--The img cardX links to the Js variable cardImageX-->
+          <img id='player-card1' class="card" src='./card_images/reverse.jpg'>
+
+          <img id="player-card2" class="card" src='./card_images/reverse.jpg'>
+
+          <img id="player-card3" class="card" src='./card_images/reverse.jpg'>
+
+          <img id="player-card4" class="card" src='./card_images/reverse.jpg'>
+
+          <img id="player-card5" class="card" src='./card_images/reverse.jpg'>
+        </div>
+          
+        
+      </div>
+
+      
+
+      <!--Scoring middle col -->
+      <div class="score-row">
+        <div class="buttons">
+
+        <button id="hit-button" style="display: inline;">Hit</button>
+
+        <button id="stand-button" style="display: inline;">Stand</button>
+
+        <button id="new-game-button" style="display: inline;">New Game!</button>
+
+        </div>
+
+        <div id="player-score">Total player score goes here</div>
+        <div id="dealer-score">Total dealer score goes here</
+      </div>
+      
+    </div>
+
+      
+
+      <!--Dealers card row -->
+      <div class="card-row">
+        <!--The img cardX links to the Js variable cardImageX-->
+        <img id='player-card1' class="card" src='./card_images/reverse.jpg'>
+
+        <img id="player-card2" class="card" src='./card_images/reverse.jpg'>
+
+        <img id="player-card3" class="card" src='./card_images/reverse.jpg'>
+
+        <img id="player-card4" class="card" src='./card_images/reverse.jpg'>
+
+        <img id="player-card5" class="card" src='./card_images/reverse.jpg'>
+
+        
+      </div>
+    </div>
+
+
+
+  </body>
+</html>
