@@ -201,7 +201,7 @@ newGameButton.addEventListener('click', function() {
 
 });
 
-//hitButton.addEventListener('click', hit(player)
+hitButton.addEventListener('click', hit(player));
 
 
 
