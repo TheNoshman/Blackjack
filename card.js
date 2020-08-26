@@ -14,11 +14,17 @@ playerScoreText.style.display = 'none';
 dealerScoreText.style.display = 'none';
 
 // Sets card images from HTML to jS variables
-let cardImage1 = document.getElementById('player-card1');
-let cardImage2 = document.getElementById('player-card2');
-let cardImage3 = document.getElementById('player-card3');
-let cardImage4 = document.getElementById('player-card4');
-let cardImage5 = document.getElementById('player-card5');
+let playerCardImage1 = document.getElementById('player-card1');
+let playerCardImage2 = document.getElementById('player-card2');
+let playerCardImage3 = document.getElementById('player-card3');
+let playerCardImage4 = document.getElementById('player-card4');
+let playerCardImage5 = document.getElementById('player-card5');
+
+let dealerCardImage1 = document.getElementById('dealer-card1');
+let dealerCardImage2 = document.getElementById('dealer-card2');
+let dealerCardImage3 = document.getElementById('dealer-card3');
+let dealerCardImage4 = document.getElementById('dealer-card4');
+let dealerCardImage5 = document.getElementById('dealer-card5');
 
 // Arrays for suits, values
 
@@ -86,14 +92,18 @@ let deckShuffle = deck => {
 
 let player = {
 	cards : [],
-	total: 0
+	total: 0,
+	hitCounter: 0,
+	name: 'player'
 }
 
 // Dealer object
 
 let dealer = {
     cards : [],
-    total: 0
+    total: 0,
+    hitCounter: 0,
+    name: 'dealer'
 };
 
 let gameOver = false;
@@ -104,10 +114,292 @@ function dealCardFromDeck() {
   return shuffledDeck.shift();
 };
 
+let hit = (playerObject) => {
+  if (!gameOver) {
+
+    playerObject.hitCounter++;
+    // Pulls card
+    let pulledCard = dealCardFromDeck();
+
+      // Adds card object to players cards array
+      playerObject.cards.push(pulledCard);
+
+      // Empty variable to assign DOM card element to
+      let cardToFlip;
+
+      // Works out which DOM card image needs to be flipped
+      if (playerObject.name === 'player') {
+        switch (playerObject.hitCounter) {
+        case 1:
+          cardToFlip = playerCardImage1;
+          break;
+        case 2:
+          cardToFlip = playerCardImage2;
+          break;
+        case 3:
+          cardToFlip = playerCardImage3;
+          break;
+        case 4:
+          cardToFlip = playerCardImage4;
+          break;
+        case 5:
+          cardToFlip = playerCardImage5;
+          break;
+        };
+      };
+
+      if (playerObject.name === 'dealer') {
+        switch (playerObject.hitCounter) {
+        case 1:
+          cardToFlip = dealerCardImage1;
+          break;
+        case 2:
+          cardToFlip = dealerCardImage2;
+          break;
+        case 3:
+          cardToFlip = dealerCardImage3;
+          break;
+        case 4:
+          cardToFlip = dealerCardImage4;
+          break;
+        case 5:
+          cardToFlip = dealerCardImage5;
+          break;
+      };
+     };
+
+     // Empty variable to assign card image to
+     let pictureToFlip;
+
+     // Aces
+
+     if (pulledCard['Face value'] === 'A' && pulledCard['Card suit'] === 'Spades') {
+      pictureToFlip = './card_images/AS.jpg';
+     }
+     if (pulledCard['Face value'] === 'A' && pulledCard['Card suit'] === 'Hearts') {
+      pictureToFlip = './card_images/AH.jpg';
+     }
+     if (pulledCard['Face value'] === 'A' && pulledCard['Card suit'] === 'Diamonds') {
+      pictureToFlip = './card_images/AD.jpg';
+     }
+     if (pulledCard['Face value'] === 'A' && pulledCard['Card suit'] === 'Clubs') {
+      pictureToFlip = './card_images/AC.jpg';
+     }
+
+     // 2's
+
+     if (pulledCard['Face value'] === '2' && pulledCard['Card suit'] === 'Spades') {
+      pictureToFlip = './card_images/2S.jpg';
+     }
+     if (pulledCard['Face value'] === '2' && pulledCard['Card suit'] === 'Hearts') {
+      pictureToFlip = './card_images/2H.jpg';
+     }
+     if (pulledCard['Face value'] === '2' && pulledCard['Card suit'] === 'Diamonds') {
+      pictureToFlip = './card_images/2D.jpg';
+     }
+     if (pulledCard['Face value'] === '2' && pulledCard['Card suit'] === 'Clubs') {
+      pictureToFlip = './card_images/2C.jpg';
+     }
+
+     // 3's
+
+     if (pulledCard['Face value'] === '3' && pulledCard['Card suit'] === 'Spades') {
+      pictureToFlip = './card_images/3S.jpg';
+     }
+     if (pulledCard['Face value'] === '3' && pulledCard['Card suit'] === 'Hearts') {
+      pictureToFlip = './card_images/3H.jpg';
+     }
+     if (pulledCard['Face value'] === '3' && pulledCard['Card suit'] === 'Diamonds') {
+      pictureToFlip = './card_images/3D.jpg';
+     }
+     if (pulledCard['Face value'] === '3' && pulledCard['Card suit'] === 'Clubs') {
+      pictureToFlip = './card_images/3C.jpg';
+     }
+
+     // 4's
+
+     if (pulledCard['Face value'] === '4' && pulledCard['Card suit'] === 'Spades') {
+      pictureToFlip = './card_images/4S.jpg';
+     }
+     if (pulledCard['Face value'] === '4' && pulledCard['Card suit'] === 'Hearts') {
+      pictureToFlip = './card_images/4H.jpg';
+     }
+     if (pulledCard['Face value'] === '4' && pulledCard['Card suit'] === 'Diamonds') {
+      pictureToFlip = './card_images/4D.jpg';
+     }
+     if (pulledCard['Face value'] === '4' && pulledCard['Card suit'] === 'Clubs') {
+      pictureToFlip = './card_images/4C.jpg';
+     }
+
+     // 5's
+
+     if (pulledCard['Face value'] === '5' && pulledCard['Card suit'] === 'Spades') {
+      pictureToFlip = './card_images/5S.jpg';
+     }
+     if (pulledCard['Face value'] === '5' && pulledCard['Card suit'] === 'Hearts') {
+      pictureToFlip = './card_images/5H.jpg';
+     }
+     if (pulledCard['Face value'] === '5' && pulledCard['Card suit'] === 'Diamonds') {
+      pictureToFlip = './card_images/5D.jpg';
+     }
+     if (pulledCard['Face value'] === '5' && pulledCard['Card suit'] === 'Clubs') {
+      pictureToFlip = './card_images/5C.jpg';
+     }
+
+     // 6's
+
+     if (pulledCard['Face value'] === '6' && pulledCard['Card suit'] === 'Spades') {
+      pictureToFlip = './card_images/6S.jpg';
+     }
+     if (pulledCard['Face value'] === '6' && pulledCard['Card suit'] === 'Hearts') {
+      pictureToFlip = './card_images/6H.jpg';
+     }
+     if (pulledCard['Face value'] === '6' && pulledCard['Card suit'] === 'Diamonds') {
+      pictureToFlip = './card_images/6D.jpg';
+     }
+     if (pulledCard['Face value'] === '6' && pulledCard['Card suit'] === 'Clubs') {
+      pictureToFlip = './card_images/6C.jpg';
+     }
+
+     // 7's
+
+     if (pulledCard['Face value'] === '7' && pulledCard['Card suit'] === 'Spades') {
+      pictureToFlip = './card_images/7S.jpg';
+     }
+     if (pulledCard['Face value'] === '7' && pulledCard['Card suit'] === 'Hearts') {
+      pictureToFlip = './card_images/7H.jpg';
+     }
+     if (pulledCard['Face value'] === '7' && pulledCard['Card suit'] === 'Diamonds') {
+      pictureToFlip = './card_images/7D.jpg';
+     }
+     if (pulledCard['Face value'] === '7' && pulledCard['Card suit'] === 'Clubs') {
+      pictureToFlip = './card_images/7C.jpg';
+     }
+
+     // 8's
+
+     if (pulledCard['Face value'] === '8' && pulledCard['Card suit'] === 'Spades') {
+      pictureToFlip = './card_images/8S.jpg';
+     }
+     if (pulledCard['Face value'] === '8' && pulledCard['Card suit'] === 'Hearts') {
+      pictureToFlip = './card_images/8H.jpg';
+     }
+     if (pulledCard['Face value'] === '8' && pulledCard['Card suit'] === 'Diamonds') {
+      pictureToFlip = './card_images/8D.jpg';
+     }
+     if (pulledCard['Face value'] === '8' && pulledCard['Card suit'] === 'Clubs') {
+      pictureToFlip = './card_images/8C.jpg';
+     }
+
+     // 9's
+
+     if (pulledCard['Face value'] === '9' && pulledCard['Card suit'] === 'Spades') {
+      pictureToFlip = './card_images/9S.jpg';
+     }
+     if (pulledCard['Face value'] === '9' && pulledCard['Card suit'] === 'Hearts') {
+      pictureToFlip = './card_images/9H.jpg';
+     }
+     if (pulledCard['Face value'] === '9' && pulledCard['Card suit'] === 'Diamonds') {
+      pictureToFlip = './card_images/9D.jpg';
+     }
+     if (pulledCard['Face value'] === '9' && pulledCard['Card suit'] === 'Clubs') {
+      pictureToFlip = './card_images/9C.jpg';
+     }
+
+     // 10's
+
+     if (pulledCard['Face value'] === '10' && pulledCard['Card suit'] === 'Spades') {
+      pictureToFlip = './card_images/10S.jpg';
+     }
+     if (pulledCard['Face value'] === '10' && pulledCard['Card suit'] === 'Hearts') {
+      pictureToFlip = './card_images/10H.jpg';
+     }
+     if (pulledCard['Face value'] === '10' && pulledCard['Card suit'] === 'Diamonds') {
+      pictureToFlip = './card_images/10D.jpg';
+     }
+     if (pulledCard['Face value'] === '10' && pulledCard['Card suit'] === 'Clubs') {
+      pictureToFlip = './card_images/10C.jpg';
+     }
+
+     // Jacks
+
+     if (pulledCard['Face value'] === 'J' && pulledCard['Card suit'] === 'Spades') {
+      pictureToFlip = './card_images/JS.jpg';
+     }
+     if (pulledCard['Face value'] === 'J' && pulledCard['Card suit'] === 'Hearts') {
+      pictureToFlip = './card_images/JH.jpg';
+     }
+     if (pulledCard['Face value'] === 'J' && pulledCard['Card suit'] === 'Diamonds') {
+      pictureToFlip = './card_images/JD.jpg';
+     }
+     if (pulledCard['Face value'] === 'J' && pulledCard['Card suit'] === 'Clubs') {
+      pictureToFlip = './card_images/JC.jpg';
+     }
+
+     // Queen's
+
+     if (pulledCard['Face value'] === 'Q' && pulledCard['Card suit'] === 'Spades') {
+      pictureToFlip = './card_images/QS.jpg';
+     }
+     if (pulledCard['Face value'] === 'Q' && pulledCard['Card suit'] === 'Hearts') {
+      pictureToFlip = './card_images/QH.jpg';
+     }
+     if (pulledCard['Face value'] === 'Q' && pulledCard['Card suit'] === 'Diamonds') {
+      pictureToFlip = './card_images/QD.jpg';
+     }
+     if (pulledCard['Face value'] === 'Q' && pulledCard['Card suit'] === 'Clubs') {
+      pictureToFlip = './card_images/QC.jpg';
+     }
+
+     // Kings's
+
+     if (pulledCard['Face value'] === 'K' && pulledCard['Card suit'] === 'Spades') {
+      pictureToFlip = './card_images/KS.jpg';
+     }
+     if (pulledCard['Face value'] === 'K' && pulledCard['Card suit'] === 'Hearts') {
+      pictureToFlip = './card_images/KH.jpg';
+     }
+     if (pulledCard['Face value'] === 'K' && pulledCard['Card suit'] === 'Diamonds') {
+      pictureToFlip = './card_images/KD.jpg';
+     }
+     if (pulledCard['Face value'] === 'K' && pulledCard['Card suit'] === 'Clubs') {
+      pictureToFlip = './card_images/KC.jpg';
+     }
+
+
+      // Takes DOM card element and replaces it with picture card
+      cardToFlip.src = pictureToFlip;
+
+      // Updates players total score
+      playerObject.total = playerObject.total += pulledCard['Card points'];
+        
+
+      // Prints player score 
+      playerScoreText.innerHTML = 'Your score : ' + player.total;
+      dealerScoreText.innerHTML = 'Dealers score : ' + dealer.total;
+
+      // Checks if player has gone bust
+        checkIfBust()
+    };
+};
+
+
 
 function checkIfBust() {
-	if (player.total > 21) {
-		console.log('You went bust! Dealer wins!');
+	if (player.total <= 21 && player.cards.length === 5) {
+		playerScoreText.innerHTML = 'You win with a five card trick!';
+  		dealerScoreText.style.display = 'Dealers score : ' + dealer.total;
+  		gameOver = true;
+  		newGameButton.style.display = 'inline';
+  		hitButton.style.display = 'none';
+		standButton.style.display = 'none';
+	}
+	else if (player.total > 21) {
+		playerScoreText.innerHTML = 'You went bust! Dealer wins';
+  		dealerScoreText.style.display = 'Dealers score : ' + dealer.total;
+  		newGameButton.style.display = 'inline';
+  		hitButton.style.display = 'none';
+		standButton.style.display = 'none';
     	gameOver = true;
     	
 	};
@@ -115,57 +407,42 @@ function checkIfBust() {
 
 // Hits card to add to player/ dealer object
 
-let hit = (playerObject) => {
-	if (!gameOver) {
 
-		// Pulls card
-		let pulledCard = dealCardFromDeck();
-
-	  	// Adds card object to players cards array
-	  	playerObject.cards.push(pulledCard);
-
-	  	// Updates players total score
-	  	playerObject.total = playerObject.total += pulledCard['Card points'];
-      	
-
-	  	// Prints player score 
-	  	playerScoreText.innerHTML = 'Your score : ' + player.total;
-  		dealerScoreText.innerHTML = 'Dealers score : ' + dealer.total;
-
-	  	// Checks if player has gone bust
-      checkIfBust()
-	  };
-};
 
 function checkWinner() {
 	if (player.total === 21) {
-		console.log('You win with a Blackjack!');
+		playerScoreText.innerHTML = 'You win with a Blackjack!';
+  		dealerScoreText.style.display = 'Dealers score : ' + dealer.total;
 		gameOver = true;
 	}
 	else if (player.total > 21) {
-		console.log('You went bust!');
+		playerScoreText.innerHTML = 'You went bust!';
+  		dealerScoreText.style.display = 'Dealers score : ' + dealer.total;
 		gameOver = true;
 	}
 	else if (player.total <= 21 && player.cards.length === 5) {
-		console.log('YOU WIN WITH A FIVE CARD TRICK!')
-	}
-	else if (dealer.total === 21) {
-		console.log('Dealer wins with a Blackjack');
-		gameOver = true;
+		playerScoreText.innerHTML = 'You win with a five card trick!';
+  		dealerScoreText.style.display = 'Dealers score : ' + dealer.total;
+  		gameOver = true;
 	}
 	else if (dealer.total > 21) {
-		console.log('Dealer went bust, you win!');
+		playerScoreText.innerHTML = 'Dealer went bust, you win!';
+  		dealerScoreText.style.display = 'Dealers score : ' + dealer.total;
 		gameOver = true;
 	}
   	else if (dealer.total >= player.total) {
-    	console.log('Dealer has a higher score, you lose');
+    	playerScoreText.innerHTML = 'Dealer wins with a higher score!';
+  		dealerScoreText.style.display = 'Dealers score : ' + dealer.total;
     	gameOver = true;
   	}
   	else if (dealer.total < player.total) {
-    	console.log('You beat the dealer with a higher score!');
+    	playerScoreText.innerHTML = 'You beat the dealer with a higher score!';
+  		dealerScoreText.style.display = 'Dealers score : ' + dealer.total;
     	gameOver = true;
     }
-    newGameButton.style.display = 'block';
+    hitButton.style.display = 'none';
+	standButton.style.display = 'none';
+    newGameButton.style.display = 'inline';
 };
 
 
@@ -181,14 +458,33 @@ function stand() {
 
 
 
-
-
-
 newGameButton.addEventListener('click', function() {
 
+  gameOver = false;
   hitButton.style.display = 'inline';
   standButton.style.display = 'inline';
   newGameButton.style.display = 'none';
+
+  player.hitCounter = 0;
+  dealer.hitCounter = 0;
+  player.cards = [];
+  player.total = 0;
+  dealer.cards = [];
+  dealer.total = 0;
+
+  playerCardImage1.src='./card_images/reverse.jpg'
+  playerCardImage2.src='./card_images/reverse.jpg'
+  playerCardImage3.src='./card_images/reverse.jpg'
+  playerCardImage4.src='./card_images/reverse.jpg'
+  playerCardImage5.src='./card_images/reverse.jpg'
+
+  dealerCardImage1.src='./card_images/reverse.jpg'
+  dealerCardImage2.src='./card_images/reverse.jpg'
+  dealerCardImage3.src='./card_images/reverse.jpg'
+  dealerCardImage4.src='./card_images/reverse.jpg'
+  dealerCardImage5.src='./card_images/reverse.jpg'
+
+
 
   newCardDeck();
   deckShuffle(deck);
@@ -201,14 +497,9 @@ newGameButton.addEventListener('click', function() {
 
 });
 
-//hitButton.addEventListener('click', hit(player)
 
-
-
-
-standButton.addEventListener('click', stand());
-
-
+hitButton.addEventListener('click', () => hit(player));
+standButton.addEventListener('click', () => stand());
 
 
 
